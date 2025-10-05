@@ -130,7 +130,7 @@ With the help of machine learning, the flow becomes more efficient:
 
 **Key Point:** ML transforms campaigns from “**broad & costly**” → “**targeted & efficient**”.
 
-![business_process_flow.png](attachment:business_process_flow.png)
+![business flow](business_flow.png)
 
 ---
 
@@ -1561,3 +1561,4 @@ https://bmctermdeposit-aey9jpu8i3rvdviogh8fer.streamlit.app
 
 https://public.tableau.com/app/profile/fransiska.sri.mayawi/viz/TableauFinalProject_17594030848810/Dashboard1?publish=yes
 
+![tableau](tableau.jpeg)
