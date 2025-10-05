@@ -1426,87 +1426,79 @@ The interpretation of the logistic regression model highlighted significant pred
 
 In summary, this project successfully demonstrated a full machine learning workflow: from data cleaning and exploratory analysis to model selection, tuning, and interpretation. The results show that while more complex models may improve raw performance, logistic regression remains a strong choice when interpretability and explainability are essential for business decision-making.
 
-### 6.2 Cost-Benefit Analysis of Deposit Prediction Model (Portugal 2014 Case)
+#### 6.2 Cost-Benefit Analysis of Deposit Prediction Model (Portugal 2014 Case)
 
-#### 6.2.1 Cost and Benefit Assumptions
-- **Benefit per TP** = €130  
-- **Cost per FP (contact cost)** = €10  
-- **Opportunity cost per FN** = €130  
-- **Infrastructure cost (cloud/server)** = €6,000 per year  
-- **Development cost (data team)** = €31,000 (one-time)  
-
-These assumptions reflect typical telemarketing costs and average profit per term deposit in 2014.  
-
----
-
-#### 6.2.2 Confusion Matrix Results (ML Model)
-From the ML model (2014 case):  
-- **TP = 552**  
-- **FP = 975**  
-- **FN = 367**  
+##### 6.2.1 Cost and Benefit Assumptions
+| Item | Value |
+|------|-------|
+| Benefit per True Positive (TP) | €130 |
+| Cost per False Positive (FP) - contact cost | €10 |
+| Opportunity cost per False Negative (FN) | €130 |
+| Infrastructure cost (cloud/server, per year) | €6,000 |
+| Development cost (data team, one-time) | €31,000 |
 
 ---
 
-#### 6.2.3 Cost and Benefit Calculations
-
-##### A. Operational Costs (from Confusion Matrix)
-- **Contact Cost (FP)** = 975 × €10 = **€9,750**  
-- **Opportunity Cost (FN)** = 367 × €130 = **€47,710**  
-- **Benefit (TP)** = 552 × €130 = **€71,760**  
-- **Net Gain (before infra/dev)** = 71,760 – (9,750 + 47,710) = **€14,300**  
+##### 6.2.2 Confusion Matrix Results (ML Model)
+| Actual \ Predicted | No Deposit | Deposit |
+|-------------------|------------|---------|
+| No Deposit | TN = 2685 | FP = 4551 |
+| Deposit    | FN = 98   | TP = 821 |
 
 ---
+
+##### 6.2.3 Cost and Benefit Calculations
+
+##### A. Operational Costs
+| Cost Type | Calculation | Amount |
+|-----------|------------|--------|
+| Contact Cost (FP) | 4551 × €10 | €45,510 |
+| Opportunity Cost (FN) | 98 × €130 | €12,740 |
+| Benefit (TP) | 821 × €130 | €106,730 |
+| **Net Gain (before infra & dev)** | 106,730 – (45,510 + 12,740) | **€48,480** |
 
 ##### B. Infrastructure & Development Costs
-- **Infrastructure (Cloud/Server)** = €6,000 per year  
-- **Development (Data Scientists & Engineer)** = €31,000  
-
----
+| Item | Amount |
+|------|--------|
+| Infrastructure (Cloud/Server) | €6,000 |
+| Development (Data Team) | €31,000 |
 
 ##### C. Total ML Costs
-Total Cost = (FP cost + FN cost) + Infrastructure + Development
-
-= 57,460 + 6,000 + 31,000 = **€94,460**
-
----
+**Total Cost** = FP + FN + Infrastructure + Development  
+= 45,510 + 12,740 + 6,000 + 31,000 = **€95,250**
 
 ##### D. Final Net Gain
-Net Gain = Benefit from TP – Total Cost
-
-= 71,760 – 94,460 = **–€22,700 (loss)**  
-
----
-
-### 6.2.4 Break-Even Point (BEP)
-For the project to break even:  
-- Add **175 TP** (from 552 → 727), or  
-- Reduce **175 FN** (from 367 → 192), or  
-- A combination of both.  
-- Reducing FP alone is insufficient since the maximum FP is 975.  
+**Net Gain** = Benefit from TP – Total Cost  
+= 106,730 – 95,250 = **€11,480**
 
 ---
 
-### 6.2.5 Real-World Insights
-- **Confusion matrix cost analysis** is standard in research, as it captures the financial impact of prediction errors.  
-- In practice, companies must also include **infrastructure, development, compliance, and maintenance costs** in ROI analysis.  
-- In 2014, considering only FP/FN costs, the model generated a **positive net gain of €14,300**.  
-- After adding infrastructure and development, the model resulted in a **net loss of –€22,700** in the first year.  
-- **Practical solutions:**  
-  - Deploy the model **multi-year** (3–5 years) → development cost is one-time, and later years become profitable.  
-  - Focus on **reducing FN** (improving recall), since opportunity costs are much higher than FP costs.  
-  - **Lower contact costs** using cheaper channels (email, SMS, digital marketing) instead of telemarketing.  
+##### 6.2.4 Break-Even Point (BEP)
+For the project to break even:
+- Increase TP by ~139 (from 821 → 960), or
+- Reduce FP by ~1,148 (from 4551 → 3,403), or
+- Reduce FN by ~88 (from 98 → 10), or
+- Any combination of the above.
 
 ---
 
-### 6.2.6 Conclusion
-- **Confusion matrix-based cost analysis** is essential to evaluate the financial viability of ML models.  
-- In Portugal 2014, the model was **not profitable in the first year** due to high development and infrastructure costs.  
-- However, if deployed over multiple years and optimized to reduce FN, the ML model could deliver **positive ROI** and outperform both “contact all” and “contact none” strategies.  
+##### 6.2.5 Real-World Insights
+- Confusion matrix cost analysis shows the financial impact of prediction errors.
+- FP costs are high due to large volume, even if per-contact cost is small.
+- FN costs are relatively small here due to low FN count.
+- Infrastructure and development costs significantly reduce net gain.
+- Strategies for improvement:
+  - Reduce FP by improving precision.
+  - Reduce FN by improving recall (smaller impact here due to low FN).
+  - Use cheaper contact methods to reduce FP costs.
+  - Multi-year deployment spreads one-time development cost.
 
 ---
 
-**Final Note:**  
-This analysis highlights the importance of evaluating **financial impact**, not just model accuracy, when deploying machine learning in real-world business settings.
+##### 6.2.6 Conclusion
+- Confusion matrix-based cost analysis is critical for financial evaluation.
+- Despite high FP, the model still generates a **positive net gain (€11,480)**.
+- Optimizing FP reduction and multi-year deployment can further improve ROI.
 
 ### 6.3 Limitations
 
