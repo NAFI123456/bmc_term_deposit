@@ -4,3 +4,4 @@ joblib==1.5.1
 scikit-learn==1.7.1
 numpy==2.3.2
 imbalanced-learn==0.14.0
+category-encoders==2.8.1
