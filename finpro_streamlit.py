@@ -3,6 +3,7 @@ import pandas as pd
 import joblib
 import imblearn
 import sklearn
+import category_encoders
 
 # /opt/anaconda3/bin/python -m streamlit run home.py
 st.set_page_config(layout="wide")
