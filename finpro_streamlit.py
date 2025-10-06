@@ -18,8 +18,9 @@ def get_prediction(data:pd.DataFrame):
 page = st.sidebar.selectbox("Please pick your preference", ["Home", "Macro Economics", "Predict"])
 
 if page == "Home":
+    
     st.title("Home Page")
-    st.write("Welcome to the Deposit Subscription Predictor! This program uses customer " \
+    st.subheader("Welcome to the Deposit Subscription Predictor! This program uses customer " \
     "information—such as age, job type, marital status, previous campaign outcomes, and contact method—to estimate the likelihood that a" \
     " customer will subscribe to a deposit. By analyzing these features, the model provides a probability score for each customer, helping banks"
     " and financial teams focus their efforts on high-potential clients. With this tool, you can make data-driven decisions, optimize marketing " \
@@ -39,7 +40,6 @@ Macroeconomic features such as consumer confidence index, price index, and emplo
 To avoid this, we use the mean values from the training dataset as representative constants. This ensures that:
 
 1. The inputs remain within the same statistical distribution the model was trained on.
-
 2. Predictions are more stable and less biased by extreme or external values that were not part of training.
 3. The model generalizes better in deployment, since it does not get pushed into regions of the feature space where it was never trained.''')
 
