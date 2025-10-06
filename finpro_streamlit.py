@@ -109,10 +109,10 @@ elif page == "Predict":
     day = prev_cont.selectbox('Last Contact Day: ', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'])
 
     # Macro Economic Values
-    confidence_index = -18.7
+    confidence_index = -40.5
     inflation_index = 93.6
-    number_employed = 4499.5
-
+    number_employed = 5167.0
+    
     input_data = {
         'age': [input_age],
         'marital': [select_marital],
