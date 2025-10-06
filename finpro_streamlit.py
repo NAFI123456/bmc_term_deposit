@@ -19,7 +19,7 @@ page = st.sidebar.selectbox("Please pick your preference", ["Home", "Macro Econo
 
 if page == "Home":
     
-    "st.markdown("<h1 style='text-align: center;'>Home Page</h1>", unsafe_allow_html=True)"
+    st.markdown("<h1 style='text-align: center;'>Home Page</h1>", unsafe_allow_html=True)
     st.subheader("Welcome to the Deposit Subscription Predictor! This program uses customer " \
     "information—such as age, job type, marital status, previous campaign outcomes, and contact method—to estimate the likelihood that a" \
     " customer will subscribe to a deposit. By analyzing these features, the model provides a probability score for each customer, helping banks"
@@ -30,7 +30,7 @@ if page == "Home":
 
 elif page == "Macro Economics":
 
-    "st.markdown("<h1 style='text-align: center;'>Macro Economics Information</h1>", unsafe_allow_html=True)"
+    st.markdown("<h1 style='text-align: center;'>Macro Economics Information</h1>", unsafe_allow_html=True)
     st.write("Macroeconomics studies the economy as a whole, looking at things like growth," \
     " inflation, and unemployment. It helps understand trends and guide decisions to keep the economy stable and improving for everyone.")
 
