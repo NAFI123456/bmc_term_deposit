@@ -1547,7 +1547,9 @@ Future work could explore hybrid approaches that balance both performance and in
 
 Model is deployed through streamlit
 
-https://bmctermdeposit-aey9jpu8i3rvdviogh8fer.streamlit.app
+[https://bmctermdeposit-aey9jpu8i3rvdviogh8fer.streamlit.app](https://bmc-deployed.streamlit.app)
+
+
 
 # 8. Tableau
 
