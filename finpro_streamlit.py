@@ -34,11 +34,14 @@ elif page == "Macro Economics":
     " inflation, and unemployment. It helps understand trends and guide decisions to keep the economy stable and improving for everyone.")
 
     st.write('''Why We Use the Mean for Macroeconomic Variables
+
 Macroeconomic features such as consumer confidence index, price index, and employment rate are highly sensitive variables that strongly influence the model’s output. If we input values that are very different from the range the model saw during training (out-of-distribution values), the logistic regression decision boundary can shift and produce unrealistic predictions (e.g., always positive).
 To avoid this, we use the mean values from the training dataset as representative constants. This ensures that:
-The inputs remain within the same statistical distribution the model was trained on.
-Predictions are more stable and less biased by extreme or external values that were not part of training.
-The model generalizes better in deployment, since it does not get pushed into regions of the feature space where it was never trained.''')
+
+1. The inputs remain within the same statistical distribution the model was trained on.
+
+2. Predictions are more stable and less biased by extreme or external values that were not part of training.
+3. The model generalizes better in deployment, since it does not get pushed into regions of the feature space where it was never trained.''')
 
     conf, price, employ = st.columns(3)
 
