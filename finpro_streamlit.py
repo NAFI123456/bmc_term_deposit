@@ -19,7 +19,7 @@ page = st.sidebar.selectbox("Please pick your preference", ["Home", "Macro Econo
 
 if page == "Home":
     
-    st.title("Home Page")
+    st.header("Home Page")
     st.subheader("Welcome to the Deposit Subscription Predictor! This program uses customer " \
     "information—such as age, job type, marital status, previous campaign outcomes, and contact method—to estimate the likelihood that a" \
     " customer will subscribe to a deposit. By analyzing these features, the model provides a probability score for each customer, helping banks"
