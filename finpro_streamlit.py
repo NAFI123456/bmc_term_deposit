@@ -33,6 +33,13 @@ elif page == "Macro Economics":
     st.write("Macroeconomics studies the economy as a whole, looking at things like growth," \
     " inflation, and unemployment. It helps understand trends and guide decisions to keep the economy stable and improving for everyone.")
 
+    st.write('''Why We Use the Mean for Macroeconomic Variables
+Macroeconomic features such as consumer confidence index, price index, and employment rate are highly sensitive variables that strongly influence the model’s output. If we input values that are very different from the range the model saw during training (out-of-distribution values), the logistic regression decision boundary can shift and produce unrealistic predictions (e.g., always positive).
+To avoid this, we use the mean values from the training dataset as representative constants. This ensures that:
+The inputs remain within the same statistical distribution the model was trained on.
+Predictions are more stable and less biased by extreme or external values that were not part of training.
+The model generalizes better in deployment, since it does not get pushed into regions of the feature space where it was never trained.''')
+
     conf, price, employ = st.columns(3)
 
     conf.markdown(
@@ -42,8 +49,8 @@ elif page == "Macro Economics":
             <p>measures how optimistic or pessimistic consumers feel about the overall economy, 
             including their personal financial situation, which can influence spending and saving behavior.</p>
 
-            Value: −18.7
-            Source: OECD
+            Value: -40.5
+            Source: Average in Dataset
         </div>
         """,
     unsafe_allow_html=True
@@ -69,8 +76,8 @@ elif page == "Macro Economics":
             <h3>Employment Rate</h3>
             <p>represents the total number of people employed in the economy, reflecting labor market health and overall economic activity.</p>
 
-            Value: 4,499.5
-            Source: Statistics Portugal
+            Value: 5167.0 (in millions)
+            Source: Mean in Dataset
         </div>
         """,
     unsafe_allow_html=True
@@ -218,27 +225,29 @@ elif page == "Predict":
     unsafe_allow_html=True
 )
     if st.button("Predict Customer Churn"):
-        # Drop Surname from prediction
+        
+        threshold = 0.5
 
-        # Predict
-        pred, pred_proba = get_prediction(pred_data)
+        pred1, pred_prob1 = get_prediction(data)  # assume returns (pred, pred_proba)
         label_map = {0: "No Deposit", 1: "Deposit"}
 
-        label_pred = label_map[pred[0]]
-        proba_no_deposit = pred_proba[0][0]
-        proba_deposit = pred_proba[0][1]
+        proba_deposit = pred_prob1[0][1]  # probability of positive class
+
+        # Apply custom threshold
+        if proba_deposit >= threshold:
+            label_pred = "Deposit"
+        else:
+            label_pred = "No Deposit"
 
         # Show result
         st.subheader("Prediction Result")
-    
-
-        if pred[0] == 1:
+        if label_pred == "Deposit":
             st.success("The customer is likely to **Deposit**")
         else:
             st.error("The customer is likely to **Not Deposit**")
 
         # Show probabilities
-        st.write("### Prediction Probabilities")
+        proba_no_deposit = pred_prob1[0][0]
         col1, col2 = st.columns(2)
 
         with col1:
@@ -248,4 +257,3 @@ elif page == "Predict":
         with col2:
             st.metric(label="Subscribe Probability", value=f"{proba_deposit:.0%}")
             st.progress(int(proba_deposit * 100))
-
