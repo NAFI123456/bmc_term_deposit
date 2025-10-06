@@ -228,7 +228,7 @@ elif page == "Predict":
         
         threshold = 0.5
 
-        pred1, pred_prob1 = get_prediction(data)  # assume returns (pred, pred_proba)
+        pred1, pred_prob1 = get_prediction(pred_data)  # assume returns (pred, pred_proba)
         label_map = {0: "No Deposit", 1: "Deposit"}
 
         proba_deposit = pred_prob1[0][1]  # probability of positive class
